@@ -10,7 +10,7 @@ module control (
 	 
 	localparam [2:0]	SHIFTorADD_SUB	= 3'b000, 
 				MOVE_COMPR	= 3'b001,
-				ALUorLD_SR	= 3'b010,
+				ALUorLD_SRorPC	= 3'b010,
 				imm_LD_SR	= 3'b011,
 				LD_SRorSP	= 3'b100,	
 				LD_ADDR		= 3'b101,
@@ -21,6 +21,7 @@ module control (
 				ADD_SUB = 5'd2,
 				MOVE_C 	= 5'd3,
 				ALU 	= 5'd4,
+				PC 	= 5'd6,
 				LD_SR 	= 5'd7,
 				immLDSR = 5'd9,
 				LD_SR 	= 5'd10,
@@ -34,11 +35,14 @@ module control (
 		case(opcode[4:2]) begin
 			SHIFTorADD_SUB	: select =(opcode[1:0] == 11) ? ADD_SUB : SHIFT;
 			MOVE_COMPR	: select = MOVE_C;
-			ALUorLD_SR	:	if (opcode[1:0] == 00) 
-							select = ALU;
-						else if(opcode[1])
-							select = LD_SR;
-						else select = INVALID;
+			ALUorLD_SRorPC	:	
+			if (opcode[1:0] == 2'b00) 
+				select = ALU;
+			else if(opcode[1:0] == 2'b01)
+				select = PC;
+			else if(opcode[1])
+				select = LD_SR;
+			else select = INVALID;
 			imm_LD_SR	: select = immLDSR;
 			LD_SRorSP 	: select = select = (opcode[1]) ? LD_SR : SP;
 			LD_ADDR		: select = LD_A;
