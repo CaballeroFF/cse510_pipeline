@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //alu_control.v of decode
-//Based on Thumb ISA (5-2)
+//Follows ARM7 ISA on page 4-2 of ARM7 Full Ref and pg 56 of 5-Stage-Pipeline 
 //////////////////////////////////////////////////////////////////////////////////
 module control (
 	input wire clk,
-	input wire [4:0] opcode, //5 left-most significant bits of 15 bit instruction
-	output reg [5:0] select // enough bits to correspond to 19 ISA
+	input wire [3:0] opcode, //4 left-most significant bits of 32 bit instruction
+	output reg [3:0] select // enough bits to correspond to 16 ISA
     );
 	 
 	localparam [2:0]	SHIFTorADD_SUB	= 3'b000, 
