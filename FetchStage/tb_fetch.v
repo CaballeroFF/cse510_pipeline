@@ -6,20 +6,9 @@
 //
 // Create Date:   19:42:22 02/21/2017
 // Design Name:   Fetch_Stage
-// Module Name:   C:/Users/Caballero/Documents/Verilog Projects/ARM pipeline/Fetch/tb_fetch.v
+// 
 // Project Name:  Fetch
-// Target Device:  
-// Tool versions:  
-// Description: 
 //
-// Verilog Test Fixture created by ISE for module: Fetch_Stage
-//
-// Dependencies:
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
 ////////////////////////////////////////////////////////////////////////////////
 
 module tb_fetch;
