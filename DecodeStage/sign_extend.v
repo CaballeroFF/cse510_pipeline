@@ -9,10 +9,14 @@
 // Description:
 //////////////////////////////////////////////////////////////////////////////////
 module sign_extend(
-		input [15:0] in,
-		output [31:0] out
+		input [23:0] in,  //immediate field 
+		output [31:0] branch_se, //branch sign extended field
+		output [31:0] store_se,  // load/store sign extended field
+		output [31:0] alu_se     // alu sign extended field
 				   );
   
-  assign out = {4'h0000,in};
+  assign branch_se = {2'h00,in};
+  assign store_se = {5'h00000,in[11:0]};
+  assign alu_se = {6'h0000000,in[7:0]};
 
 endmodule
