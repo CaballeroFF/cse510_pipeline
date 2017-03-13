@@ -1,0 +1,2 @@
+add a reservation station like circuit that will take in a control signal and 4bit inputs.
+add another mux to choose between two of the sign extends.
