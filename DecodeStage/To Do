@@ -1,1 +1,3 @@
 I did not include the control signal circuit
+
+modify sign extend to have 1 input and 3 outputs.
