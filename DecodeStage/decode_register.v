@@ -10,7 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module decode_register(
 	input clk, r_write,
-	input [4:0] rs, rt, rd, 
+	input [3:0] rs, rt, rd, 
 	input[31:0] w_data,
     output reg [31:0] dataA, dataB
     );
