@@ -13,12 +13,16 @@ module decode_latch(
 			input clk,
 			input [31:0] next_pc,
 			input [31:0] dataA, dataB,
-			input [31:0] sign_extend,
+			input [31:0] br_se,             //branch sign extended   
+			input [31:0] ls_se,             //load / store sign extended
+			input [31:0] alu_se,            // alu sign extended
 			input [4:0]  rd,
 			//input [4:0]  rd, for immediate type
 			output reg [31:0] pc_out,
 			output reg [31:0] dataA_out, dataB_out,
-			output reg [31:0] sign_extend_out,
+			output reg [31:0] br_se_out,
+			output reg [31:0] ls_se_out,
+			output reg [31:0] alu_se_out,
 			output reg [4:0] rd_out
 					);
 					
@@ -27,7 +31,9 @@ module decode_latch(
 		pc_out <= next_pc;
 		dataA_out <= dataA;
 		dataB_out <= dataB;
-		sign_extend_out <= sign_extend;
+		br_se_out <= br_se;
+		ls_se_out <= ls_se;
+		alu_se_out <= alu_se;
 		rd_out <= rd;
 		end
 endmodule
