@@ -20,16 +20,18 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Fetch_Stage(
 	input clk,
-	//no input for now
+	input [31:0]  brPC,
+	input sel_mux,
 	output [31:0] instruction,
 	output [31:0] Next_PC
     );
 	 
-	 wire [31:0] w1, w2, w3, w4;
+	wire [31:0] w0,w1, w2, w3, w4;
 
-	PC c0 (.clk(clk), .NewPC(w1), .PC(w2));
-	PC_Incrementor c1 (.PC(w2), .Next_PC(w1));
-	Instruction_Memory c2 (.clk(clk), .instruction(w2), .Data(w3));
-	Fetch_Latch c3 (.clk(clk), .instruction(w3), .PC(w1), .instr_out(instruction), .PC_out(Next_PC));
+	PC c0 (.clk(clk), .NewPC(w0), .PC(w2));
+	pc_mux c1 (.sel(sel_mux), .br(brPC), .incr(w1), .newPC(w0));
+	PC_Incrementor c2 (.PC(w2), .Next_PC(w1));
+	Instruction_Memory c3 (.clk(clk), .instruction(w2), .Data(w3));
+	Fetch_Latch c4 (.clk(clk), .instruction(w3), .PC(w1), .instr_out(instruction), .PC_out(Next_PC));
 
 endmodule
