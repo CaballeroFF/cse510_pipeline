@@ -16,14 +16,14 @@ module decode_latch(
 			input [31:0] br_se,             //branch sign extended   
 			input [31:0] ls_se,             //load / store sign extended
 			input [31:0] alu_se,            // alu sign extended
-			input [4:0]  rd,
+			input [3:0]  rd,
 			//input [4:0]  rd, for immediate type
 			output reg [31:0] pc_out,
 			output reg [31:0] dataA_out, dataB_out,
 			output reg [31:0] br_se_out,
 			output reg [31:0] ls_se_out,
 			output reg [31:0] alu_se_out,
-			output reg [4:0] rd_out
+			output reg [3:0] rd_out
 					);
 					
 		always @ (posedge clk)
