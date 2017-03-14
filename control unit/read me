@@ -1,1 +1,4 @@
 the control unit should go in the decode stage
+for condition field we will only use: equal, not equal,
+negative, positive or zero, greater than or equal, greater than,
+less than or equal to, less than, and always (will be default).
