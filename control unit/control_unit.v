@@ -12,16 +12,16 @@ module control_unit (
 					  br = 2'b10;
 					  
 	localparam [4:0]  add = 6'b00100, //alu
-					  addi = 6'b10100,
-					  sub = 6'b00010,
-					  subi = 6'b10010,
-					  _and = 6'00000,
-					  andi = 6'10000,
-					  _or = 6'01100,
-					  ori = 6'11100,
+					  addi = 5'b10100,
+					  sub = 5'b00010,
+					  subi = 5'b10010,
+					  _and = 5'00000,
+					  andi = 5'10000,
+					  _or = 5'01100,
+					  ori = 5'11100,
 	//not using P U B W bits
-					  rm = 6'b0xxxx, //load/store
-					  imm = 6'b1xxxx;
+					  rm = 5'b0xxxx, //load/store
+					  imm = 5'b1xxxx;
 	//localparam [3:0]
 
 always @ *
