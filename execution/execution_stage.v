@@ -32,7 +32,7 @@ module ex_stage (
 
 	reserve e4 (.alu_out(alu_cond), .set_cond(set_cond), .cond(Wcond));
 	
-	ex_latch e5 (.clk(clk), .br(Wbr), .alu(Wres), .adder(WPC), .immediate(br_imm), .rd(rd),
-				 .br_out(branch), .alu_out(alu_result), .adder_out(newPC), .imm_out(imm_out),
-				 .rd_out(rd_out));
+	ex_latch e5 (.clk(clk), .br(Wbr), .alu_cond(Wcond), .alu(Wres), .adder(WPC), .immediate(br_imm), 
+		     .rd(rd),.br_out(branch), .alu_out(alu_result), .adder_out(newPC), .imm_out(imm_out),
+		     .rd_out(rd_out), .alu_cond_out(alu_cond_out));
 endmodule
