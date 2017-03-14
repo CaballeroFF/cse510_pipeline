@@ -8,6 +8,8 @@ module reserve(
 	output reg [3:0] cond
     );
 	always @ (posedge set_cond) //no clock needed
-		//if(set_cond) dont need this
+		if(set_cond)
 			cond <= alu_out;
+		else
+			cond <= 4'b1110;
 endmodule
