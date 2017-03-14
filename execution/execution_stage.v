@@ -14,7 +14,7 @@ module ex_stage (
 		output [31:0] alu_result,
 		output [31:0] imm_out,
 		output [5:0] rd_out,
-		output branch,
+		output [3:0] branch,
 		output [3:0] alu_cond_out
 				);
 	wire [31:0] WPC, Walu, Wres, Wimm;
