@@ -4,12 +4,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 module reserve(
 	input wire [3:0] alu_out,
-	input wire set_cond,
+	//input wire set_cond,
 	output reg [3:0] cond
     );
-	always @ (posedge set_cond) //no clock needed
-		if(set_cond)
-			cond <= alu_out;
-		else
-			cond <= 4'b1110;
+	//always @ (posedge set_cond) //might need clock
+		//if(set_cond)
+			assign cond = alu_out;
+		//else
+		//	cond <= 4'b1110;
 endmodule
