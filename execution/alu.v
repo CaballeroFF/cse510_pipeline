@@ -2,17 +2,17 @@
 
 module alu (
 		input [31:0] A, B,
-		input [2:0] control,     //how many bits?, comes from decode stage control unit
+		input [1:0] control,     //how many bits?, comes from decode stage control unit
 		output reg [3:0] branch,
 		output reg [31:0] result
 			);
 	
 	
-	localparam [2:0]  add = 3'b000,  //not actual opcode
-					  sub = 3'b001,
+	localparam [1:0]  add = 2'b00,  //not actual opcode
+					  sub = 2'b01,
 					  //br = 3'b010,
-					  l_and = 3'b011,
-					  l_or = 3'b100;
+					  l_and = 2'b11,
+					  l_or = 2'b10;
 	
 	always @ *
 		begin
