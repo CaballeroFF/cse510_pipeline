@@ -25,7 +25,7 @@ module decode_register(
 		memory[0] = 1;
 		memory[1] = 2;
 		memory[2] = 3;
-		memory[3] = 4;
+		memory[3] = 0;
 		memory[4] = 5;
 		memory[5] = 6;
 		memory[6] = 7;
@@ -45,7 +45,7 @@ module decode_register(
 		dataB = memory[rt];
 	 end
   
-  always @ (posedge clk)
+  always @ (posedge clk, w_data)
     begin
 	   if (r_write)
 		  /*memory[regd] <= w_data[31:24];
