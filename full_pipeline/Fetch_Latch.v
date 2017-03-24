@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Fetch_Latch(
 	input clk,
+	input reset,
 	input [31:0] instruction,
 	input [31:0] PC,
 	output reg [31:0] instr_out,
@@ -27,6 +28,12 @@ module Fetch_Latch(
     );
 	 
 	 always @ (posedge clk)
+	   if (reset)
+		begin
+			instr_out <= 0;
+			PC_out <= 0;
+		end
+		else
 		begin
 			instr_out <= instruction;
 			PC_out <= PC;
