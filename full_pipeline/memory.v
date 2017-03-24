@@ -12,7 +12,7 @@ module memory_register (
 		reg [31:0] mem [9:0];
 		initial begin
 		mem[0] = 11;
-		mem[1] = 12;
+		mem[1] = 122;
 		mem[2] = 31;
 		mem[3] = 14;
 		mem[4] = 52;
@@ -23,8 +23,8 @@ module memory_register (
 		mem[9] = 120;
 	 end
 	 
-	   always @ (posedge read)
-			//if (read)
+	   always @ *
+			if (read)
 				read_data = mem[address];
 		always @ (posedge clk)
 			if(write)
