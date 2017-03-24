@@ -2,6 +2,7 @@
 
 module ex_latch ( //may be missing some inputs
 		input clk, 
+		input reset,
 		input[3:0] br,
 		input [3:0] br_cond,
 		input [3:0] alu_cond, //comes from mem stage
@@ -20,6 +21,18 @@ module ex_latch ( //may be missing some inputs
 		output reg [10:0] sign_out
 		); 
 	always @ (posedge clk)
+	if (reset)
+	begin
+		br_out <= 0;
+		alu_out <= 0;
+		adder_out <= adder;
+		write_out <= 0;
+		rd_out <= 0;
+		alu_cond_out <= 0;
+		sign_out <= 0;
+		br_cond_out <= 0;
+	end
+	else
 	begin
 		br_out <= br;
 		alu_out <= alu;
