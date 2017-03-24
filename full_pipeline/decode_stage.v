@@ -10,6 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module decode_stage(
 		input clk, r_write,
+		input reset,
 		input [3:0] rd_write,          //changed to 4bits
 		input [31:0] instruction, PC, data_in,
 		output [31:0] pc_out,
@@ -18,6 +19,7 @@ module decode_stage(
 		output [31:0] ls_se_out,
 		output [31:0] alu_se_out,
 		output [3:0] rd_out,
+		output [3:0] rn, rm,
 		output [10:0] signals,
 		output [3:0] br_cond
 				);
@@ -40,10 +42,10 @@ module decode_stage(
 					.alu_se(Walu_se));		
 	
 	//missing control signals
-	decode_latch d3 (.clk(clk), .next_pc(PC), .dataA(WA),.dataB(WB), .signals(Wsign), 
-					 .br_se(Wbr_se), .ls_se(Wls_se), .alu_se(Walu_se), .rd(instruction[15:12]), //changed to 4 bits      
-					 .pc_out(pc_out), .dataA_out(dataA_out),.dataB_out(dataB_out), 
-					 .br_se_out(br_se_out), .ls_se_out(ls_se_out), .alu_se_out(alu_se_out), 
+	decode_latch d3 (.clk(clk), .reset(reset), .next_pc(PC), .dataA(WA),.dataB(WB), .signals(Wsign), 
+					 .br_se(Wbr_se), .ls_se(Wls_se), .alu_se(Walu_se), .rd(instruction[15:12]), .rn(instruction[19:16]),      
+					 .rm(instruction[3:0]),.pc_out(pc_out), .dataA_out(dataA_out),.dataB_out(dataB_out), 
+					 .br_se_out(br_se_out), .ls_se_out(ls_se_out), .alu_se_out(alu_se_out), .rm_out(rm), .rn_out(rn),
 					 .rd_out(rd_out), .sign_out(signals), .instr_cond(instruction[31:28]), .br_cond(br_cond));
 
 endmodule 
