@@ -62,6 +62,6 @@ always @ *
 	  endcase
 	end
 	
-	default: signals = 11'b01000011000;
+	default: signals = 11'b00000000000;
  endcase
 endmodule
